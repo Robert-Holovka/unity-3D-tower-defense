@@ -8,6 +8,7 @@ namespace Scripts.Cube
     {
         public bool IsPlaceable { get; set; } = true;
         public Waypoint ExploredFrom { get; set; } = default;
+        public bool IsExplored { get; set; } = false;
         public Vector2Int GridPosition { get; set; } = default;
 
         [SerializeField] TextMesh gridPositionTextMesh = default;

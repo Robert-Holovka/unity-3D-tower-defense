@@ -93,6 +93,7 @@ namespace Scripts.Enemy
         {
             Queue<Waypoint> queue = new Queue<Waypoint>();
             queue.Enqueue(startWaypoint);
+            startWaypoint.IsExplored = true;
 
             while (queue.Count > 0)
             {
@@ -110,10 +111,11 @@ namespace Scripts.Enemy
                 if (!grid.ContainsKey(neighbourCoordinates)) continue;
 
                 Waypoint neighbour = grid[neighbourCoordinates];
-                if (neighbour.ExploredFrom == null)
+                if (!neighbour.IsExplored)
                 {
                     queue.Enqueue(neighbour);
                     neighbour.ExploredFrom = from;
+                    neighbour.IsExplored = true;
                 }
             }
         }
