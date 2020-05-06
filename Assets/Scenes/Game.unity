@@ -5580,7 +5580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e5c7e7b50b2884dafd5610c7507a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  algorithm: 0
+  algorithm: 1
   startWaypoint: {fileID: 1376260714}
   endWaypoint: {fileID: 2073480881}
 --- !u!1001 &1100834118

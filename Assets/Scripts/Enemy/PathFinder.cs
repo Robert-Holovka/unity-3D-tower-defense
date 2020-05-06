@@ -38,11 +38,14 @@ namespace Scripts.Enemy
                     case Algorithm.A_STAR:
                         throw new NotImplementedException();
                     case Algorithm.DFS:
-                        throw new NotImplementedException();
+                        DepthFirstSearch(startWaypoint);
+                        Debug.Log("Calculating path with DFS");
+                        break;
                     case Algorithm.DIJKSTRA:
                         throw new NotImplementedException();
                     default:
                         BreadthFirstSearch();
+                        Debug.Log("Calculating path with BFS");
                         break;
                 }
                 FormPath();
@@ -70,10 +73,12 @@ namespace Scripts.Enemy
         private void FormPath()
         {
             SetAsPath(endWaypoint);
+            Debug.Log(endWaypoint);
 
             Waypoint previous = endWaypoint.ExploredFrom;
             while (previous != startWaypoint)
             {
+                Debug.Log(previous);
                 SetAsPath(previous);
                 previous = previous.ExploredFrom;
             }
@@ -89,6 +94,29 @@ namespace Scripts.Enemy
         }
 
         #region ALGORITHM
+
+        private bool DepthFirstSearch(Waypoint at)
+        {
+            if (at.IsExplored) return false;
+            at.IsExplored = true;
+
+            List<Waypoint> neighbours = GetNeighbours(at);
+            foreach (Waypoint neighbour in neighbours)
+            {
+                if (neighbour.IsExplored) continue;
+                if (neighbour == endWaypoint)
+                {
+                    endWaypoint.ExploredFrom = at;
+                    endWaypoint.IsExplored = true;
+                    return true;
+                }
+
+                neighbour.ExploredFrom = at;
+                if (DepthFirstSearch(neighbour)) return true;
+            }
+            return false;
+        }
+
         private void BreadthFirstSearch()
         {
             Queue<Waypoint> queue = new Queue<Waypoint>();
@@ -99,25 +127,29 @@ namespace Scripts.Enemy
             {
                 var searchCenter = queue.Dequeue();
                 if (searchCenter == endWaypoint) break;
-                ExploreNeighbours(searchCenter, queue);
-            }
-        }
-
-        private void ExploreNeighbours(Waypoint from, Queue<Waypoint> queue)
-        {
-            foreach (Vector2Int direction in directions)
-            {
-                Vector2Int neighbourCoordinates = from.GridPosition + direction;
-                if (!grid.ContainsKey(neighbourCoordinates)) continue;
-
-                Waypoint neighbour = grid[neighbourCoordinates];
-                if (!neighbour.IsExplored)
+                List<Waypoint> neighbours = GetNeighbours(searchCenter);
+                foreach (Waypoint neighbour in neighbours)
                 {
+                    if (neighbour.IsExplored) continue;
                     queue.Enqueue(neighbour);
-                    neighbour.ExploredFrom = from;
+                    neighbour.ExploredFrom = searchCenter;
                     neighbour.IsExplored = true;
                 }
             }
+        }
+
+        private List<Waypoint> GetNeighbours(Waypoint center)
+        {
+            List<Waypoint> neighbours = new List<Waypoint>();
+            foreach (Vector2Int direction in directions)
+            {
+                Vector2Int neighbour = center.GridPosition + direction;
+                if (grid.ContainsKey(neighbour))
+                {
+                    neighbours.Add(grid[neighbour]);
+                }
+            }
+            return neighbours;
         }
         #endregion
     }
