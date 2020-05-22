@@ -35,14 +35,10 @@ namespace Scripts.Enemy
                 LoadBlocks();
                 switch (algorithm)
                 {
-                    case Algorithm.A_STAR:
-                        throw new NotImplementedException();
                     case Algorithm.DFS:
                         DepthFirstSearch(startWaypoint);
                         Debug.Log("Calculating path with DFS");
                         break;
-                    case Algorithm.DIJKSTRA:
-                        throw new NotImplementedException();
                     default:
                         BreadthFirstSearch();
                         Debug.Log("Calculating path with BFS");
