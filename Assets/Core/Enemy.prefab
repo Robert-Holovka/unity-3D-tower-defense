@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43f9cfee4ce44d4289046aa3435e9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementPeriod: 1
+  movementPeriod: 0.5
 --- !u!114 &8987480830898134412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 6709495764760730549}
-  health: 10
-  damage: 10
+  health: 30
+  damage: 25
 --- !u!54 &-4005901239561211925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,6 +151,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -251,11 +252,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5410309879480351833}
     m_Modifications:
-    - target: {fileID: 747658616222154867, guid: 6e7fa995deb05cc42bfa3d01e2d9d9f8,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy Death
-      objectReference: {fileID: 0}
     - target: {fileID: 747658616222154864, guid: 6e7fa995deb05cc42bfa3d01e2d9d9f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -310,6 +306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 747658616222154867, guid: 6e7fa995deb05cc42bfa3d01e2d9d9f8,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy Death
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7fa995deb05cc42bfa3d01e2d9d9f8, type: 3}

@@ -14,6 +14,10 @@ namespace Scripts.Enemy
             get => damage;
         }
 
+        private GameManager gameManager;
+
+        private void Awake() => gameManager = FindObjectOfType<GameManager>();
+
         private void OnParticleCollision(GameObject other)
         {
             health -= other.GetComponentInParent<Turret>().Damage;
@@ -28,6 +32,8 @@ namespace Scripts.Enemy
         {
             var deathVFX = Instantiate(deathParticles, transform.position, Quaternion.identity);
             deathVFX.Play();
+
+            gameManager.OnEnemyDeath();
             Destroy(deathVFX.gameObject, deathVFX.main.duration);
             Destroy(gameObject);
         }

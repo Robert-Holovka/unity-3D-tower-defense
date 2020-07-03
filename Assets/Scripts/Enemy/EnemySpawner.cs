@@ -8,19 +8,21 @@ namespace Scripts.Enemy
         [SerializeField] EnemyMovement enemyPrefab = default;
         [SerializeField] Transform parent = default;
         [Range(0.1f, 20f)] [SerializeField] float secondsBetweenSpawns = 2f;
+        [SerializeField] int waveSize = 10;
 
-        // TODO: Object pooling
+        public int WaveSize { get => waveSize; }
+
         private void Start() => StartCoroutine(SpawnEnemies());
 
         private IEnumerator SpawnEnemies()
         {
-            while (true)
+            while (waveSize > 0)
             {
                 var newEnemy = Instantiate(enemyPrefab, parent.position, Quaternion.identity);
                 newEnemy.transform.parent = parent;
+                waveSize--;
                 yield return new WaitForSeconds(secondsBetweenSpawns);
             }
         }
     }
 }
-
