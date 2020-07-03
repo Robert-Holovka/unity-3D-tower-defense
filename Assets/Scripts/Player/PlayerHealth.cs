@@ -18,7 +18,7 @@ namespace Scripts.Player
         {
             EnemyStats enemy = other.GetComponent<EnemyStats>();
             health -= enemy.Damage;
-            healthText.text = health.ToString();
+            healthText.text = healthText.text = $"Health: {health}";
 
             if (health <= 0)
             {

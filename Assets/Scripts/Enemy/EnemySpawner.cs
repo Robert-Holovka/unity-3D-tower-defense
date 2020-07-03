@@ -8,15 +8,15 @@ namespace Scripts.Enemy
         [SerializeField] EnemyMovement enemyPrefab = default;
         [SerializeField] Transform parent = default;
         [Range(0.1f, 20f)] [SerializeField] float secondsBetweenSpawns = 2f;
-        [SerializeField] int waveSIze = 10;
+        [SerializeField] int waveSize = 10;
 
-        public int WaveSize { get => waveSIze; }
+        public int WaveSize { get => waveSize; }
 
         private int remained;
 
         private void Start()
         {
-            remained = waveSIze;
+            remained = waveSize;
             StartCoroutine(SpawnEnemies());
         }
 
