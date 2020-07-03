@@ -21,7 +21,7 @@ namespace Scripts.Player
 
         void Update()
         {
-            SetTargetEnemey();
+            SetTargetEnemy();
             if (enemyTarget == null)
             {
                 Shoot(false);
@@ -33,7 +33,7 @@ namespace Scripts.Player
             }
         }
 
-        private void SetTargetEnemey()
+        private void SetTargetEnemy()
         {
             EnemyMovement[] enemies = FindObjectsOfType<EnemyMovement>();
             if (enemies.Length == 0) return;

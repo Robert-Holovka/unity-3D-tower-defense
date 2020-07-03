@@ -14,20 +14,9 @@ namespace Scripts.Cube
         [SerializeField] TextMesh gridPositionTextMesh = default;
         private CubeEditor cubeEditor;
 
-        private void Awake()
-        {
-            cubeEditor = GetComponent<CubeEditor>();
-        }
-
-        private void Start()
-        {
-            GridPosition = cubeEditor.CalculateGridPosition();
-        }
-
-        private void Update()
-        {
-            UpdateLabel();
-        }
+        private void Awake() => cubeEditor = GetComponent<CubeEditor>();
+        private void Start() => GridPosition = cubeEditor.CalculateGridPosition();
+        private void Update() => UpdateLabel();
 
         private void UpdateLabel()
         {
@@ -46,9 +35,6 @@ namespace Scripts.Cube
             }
         }
 
-        public override string ToString()
-        {
-            return $"{GridPosition.x},{GridPosition.y}";
-        }
+        public override string ToString() => $"{GridPosition.x},{GridPosition.y}";
     }
 }

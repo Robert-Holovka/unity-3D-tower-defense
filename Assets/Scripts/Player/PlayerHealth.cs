@@ -9,9 +9,14 @@ namespace Scripts.Player
         [SerializeField] Text healthText = default;
         [SerializeField] float health = 100f;
 
-        private void Start()
+        private void Start() => healthText.text = $"Health: {health}";
+
+        private void Update()
         {
-            healthText.text = $"Health: {health}";
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
         }
 
         private void OnTriggerEnter(Collider other)

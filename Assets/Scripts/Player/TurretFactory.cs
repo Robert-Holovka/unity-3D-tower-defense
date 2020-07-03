@@ -14,10 +14,7 @@ namespace Scripts.Player
 
         private Queue<Turret> turrets = new Queue<Turret>();
 
-        private void Start()
-        {
-            UpdateTurretText();
-        }
+        private void Start() => UpdateTurretText();
 
         public void AddTurret(Waypoint baseWaypoint)
         {

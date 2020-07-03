@@ -10,10 +10,7 @@ namespace Scripts.Enemy
         [Range(0.1f, 20f)] [SerializeField] float secondsBetweenSpawns = 2f;
 
         // TODO: Object pooling
-        private void Start()
-        {
-            StartCoroutine(SpawnEnemies());
-        }
+        private void Start() => StartCoroutine(SpawnEnemies());
 
         private IEnumerator SpawnEnemies()
         {

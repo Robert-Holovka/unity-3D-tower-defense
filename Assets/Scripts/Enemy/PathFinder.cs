@@ -1,5 +1,4 @@
 ﻿using Scripts.Cube;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +11,7 @@ namespace Scripts.Enemy
             BFS,
             DFS
         }
+
         [SerializeField] Algorithm algorithm = Algorithm.BFS;
         [SerializeField] Waypoint startWaypoint = default;
         [SerializeField] Waypoint endWaypoint = default;
@@ -87,7 +87,6 @@ namespace Scripts.Enemy
             path.Add(waypoint);
             waypoint.IsPlaceable = false;
         }
-
         #region ALGORITHM
 
         private bool DepthFirstSearch(Waypoint at)
