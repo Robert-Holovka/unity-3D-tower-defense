@@ -10,11 +10,9 @@ namespace Scripts.Enemy
         private enum Algorithm
         {
             BFS,
-            DFS,
-            DIJKSTRA,
-            A_STAR
+            DFS
         }
-        [SerializeField] Algorithm algorithm;
+        [SerializeField] Algorithm algorithm = Algorithm.BFS;
         [SerializeField] Waypoint startWaypoint = default;
         [SerializeField] Waypoint endWaypoint = default;
 
@@ -39,6 +37,7 @@ namespace Scripts.Enemy
                         DepthFirstSearch(startWaypoint);
                         Debug.Log("Calculating path with DFS");
                         break;
+                    case Algorithm.BFS:
                     default:
                         BreadthFirstSearch();
                         Debug.Log("Calculating path with BFS");

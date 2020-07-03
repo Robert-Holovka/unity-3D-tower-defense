@@ -7,9 +7,9 @@ namespace Scripts.Player
 {
     internal class TurretFactory : MonoBehaviour
     {
-        [SerializeField] Turret turretPrefab;
-        [SerializeField] Transform parent;
-        [SerializeField] Text turretsPlacedText;
+        [SerializeField] Turret turretPrefab = default;
+        [SerializeField] Transform parent = default;
+        [SerializeField] Text turretsPlacedText = default;
         [SerializeField] int turretLimit = 3;
 
         private Queue<Turret> turrets = new Queue<Turret>();
