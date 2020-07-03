@@ -28,7 +28,7 @@ namespace Scripts.Enemy
             }
         }
 
-        private void Die()
+        internal void Die()
         {
             var deathVFX = Instantiate(deathParticles, transform.position, Quaternion.identity);
             deathVFX.Play();

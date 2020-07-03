@@ -27,7 +27,7 @@ namespace Scripts.Enemy
             yield return new WaitForSeconds(movementPeriod);
 
             // Reached destination
-            gameObject.SetActive(false);
+            GetComponent<EnemyStats>().Die();
         }
     }
 }
